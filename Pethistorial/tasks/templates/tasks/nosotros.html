@@ -1,0 +1,33 @@
+{% extends 'tasks/base.html' %}
+{% load static %} 
+{% block content%}
+<html lang="es">
+<head>
+    <link href="{% static "/css/nosotros.css" %}" type="text/css" rel="stylesheet" media="screen,projection" />  
+</head>
+
+
+<body>
+    <div class="container1  mb-5 d-flex  justify-content-center vh-100">
+        <div >
+          <p>
+            <h2>Nosotros</h2>
+            <h4>Que tal somos los creadores de esta app llamada prettytails la cual es creada por 2 analistas programadores:
+              
+              
+            </h3>
+
+              <h3>Brandon Troncoso </h3>
+              <h3>Benjamin Guajardo </h3>
+
+              <br>
+            <img src="{% static "/img/Inacap.png" %}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            INACAP sede apoquindo
+          </p>
+        </div>
+        
+      </div>
+</body>
+
+</html>
+{% endblock %}

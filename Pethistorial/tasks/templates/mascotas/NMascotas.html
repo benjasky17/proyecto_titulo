@@ -1,0 +1,83 @@
+{% extends 'tasks/base.html' %}
+{% block content %}
+<br>
+<h3 style="color: aliceblue;">Mascotas</h3>
+<br>
+
+<div class="aside">
+  <body style="background-color: #101728;
+  height: auto;">
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="input-group">
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar...">
+            <button class="btn btn-primary" id="searchButton">Buscar</button>
+            <a href={% url 'agregarMascota' %}  class="btn btn-secondary">Agregar Mascotas</a>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-6 offset-md-3">
+          <ul id="searchResults" class="list-group"></ul>
+        </div>
+      </div>
+    </div>
+    <br>
+    
+    <div class="container">
+      <div class="row">
+        {% for mascota in mascotas %}
+        <div class="col-md-4">
+          <div class="card" data-cardtitle="{{ mascota.nombre }}" data-cardtext="tipo mascota:{{ mascota.tipo_mascota }}Edad: {{ mascota.edad }} Sexo: {{ mascota.sexo }} Color: {{ mascota.color }} Raza: {{ mascota.raza }}">
+            {% if mascota.tipo_mascota == "Perro" %}
+            <img class="card-img-top" src="https://www.clarin.com/img/2022/07/06/los-perros-de-pelo-corto___uCxI9StAx_2000x1500__1.jpg" alt="Imagen de Perro">
+            {% elif mascota.tipo_mascota == "Gato" %}
+            <img class="card-img-top" src="https://static.nationalgeographic.es/files/styles/image_3200/public/75552.ngsversion.1422285553360.jpg?w=1600&h=1067" alt="Imagen de Gato">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ mascota.nombre | upper}}</h5>
+              <p class="card-text">tipo mascota: {{ mascota.tipo_mascota }}</p>
+              <p class="card-text">Edad: {{ mascota.edad }}</p>
+              <p class="card-text">Sexo: {{ mascota.sexo }}</p>
+              <p class="card-text">Color: {{ mascota.color }}</p>
+              <p class="card-text">Raza: {{ mascota.raza }}</p>
+              <a href="{% url 'infomascotas' mascota_id=mascota.id %}" class="btn btn-primary">Ver Documentos</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+
+  <script>
+    document.getElementById('searchButton').addEventListener('click', function() {
+      var searchInput = document.getElementById('searchInput').value.toLowerCase();
+      var cards = document.getElementsByClassName('card');
+      var searchResults = document.getElementById('searchResults');
+      searchResults.innerHTML = '';
+
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var cardTitle = card.dataset.cardtitle.toLowerCase();
+        var cardText = card.dataset.cardtext.toLowerCase();
+
+        if (cardTitle.includes(searchInput) || cardText.includes(searchInput)) {
+          card.style.display = 'block';
+
+          var li = document.createElement('li');
+          li.className = 'list-group-item';
+          li.innerText = cardTitle;
+          li.addEventListener('click', function() {
+            window.location.href = card.querySelector('a').href;
+          });
+          searchResults.appendChild(li);
+        } else {
+          card.style.display = 'none';
+        }
+      }
+    });
+  </script>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'tasks/base.html' %}
+{% load static %} 
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Agregar Desparacitación</h3>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="nombre_desparacitacion" style="color: black;">Nombre de la desparacitación:</label>
+              <input type="text" class="form-control" id="nombre_desparacitacion" name="nombre_desparacitacion">
+            </div>
+            <div class="form-group">
+              <label for="tipo_desparacitacion" style="color: black;">Tipo de desparacitación:</label>
+              <input type="text" class="form-control" id="tipo_desparacitacion" name="tipo_desparacitacion">
+            </div>
+            <div class="form-group">
+              <label for="documento" style="color: black;">Documento adjunto:</label>
+              <input type="file" class="form-control" id="documento" name="documento">
+            </div>
+            <div class="text-end mt-3">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

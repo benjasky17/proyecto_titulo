@@ -1,0 +1,74 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<br>
+<h3 style="color: aliceblue;">Perfil</h3>
+<br>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card mx-auto bg-dark" style="width: 40rem; border-radius: 1rem; border-color: #ffffff;">
+      <div class="card-body">
+        <h1 style="color: aliceblue;">Datos del usuario</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nombre de usuario</th>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th>Correo electrónico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ form.username.value }}</td>
+              <td>{{ form.first_name.value }}</td>
+              <td>{{ form.last_name.value }}</td>
+              <td>{{ form.email.value }}</td>      
+            </tr>
+          </tbody>
+        </table>
+        {% if user.profile %}
+        <h1 style="color: aliceblue; ">Datos del Perfil</h1>
+       
+          <table class="table " style="background-color: #bcbefa;">
+            <thead >
+              <tr>
+                <th>Rut</th>
+                <th>Dirección</th>
+                <th>Comuna</th>
+                <th>Teléfono</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {% for profile in profile %}
+              <tr>
+                <td>{{ user.profile.rut_user }}</td>
+                <td>{{ user.profile.address }}</td>
+                <td>{{ user.profile.location }}</td>
+                <td>{{ user.profile.telephone }}</td>   
+                
+                
+              </tr>
+              {% endfor %}
+              <tr>
+                <td>{{ user.profile.rut_user }}</td>
+                <td>{{ user.profile.address }}</td>
+                <td>{{ user.profile.location }}</td>
+                <td>{{ user.profile.telephone }}</td>   
+                </tr>
+            </tbody>
+          </table>
+        {% else %}
+          <strong>No se encuentran Datos</strong>
+        {% endif %}
+        <br>
+        <a href={% url 'agregarPerfil' %} class="btn btn-primary" style="float: right;">Actualizar del Perfil</a>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+{% endblock %}

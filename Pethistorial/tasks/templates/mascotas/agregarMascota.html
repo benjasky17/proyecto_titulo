@@ -1,0 +1,99 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<html>
+<head>
+    <title>Agregar Mascota</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="card card-sm" style="background-color: #bcbefa; margin-top: 2rem;">
+        <h1 class="card-header">Agregar Mascota</h1>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+               
+                <div class="mb-3">
+                    <label for="id_tipo_mascota" class="form-label" style="color: black;">Tipo:</label>
+                    <select name="tipo_mascota" id="id_tipo_mascota" class="form-select">
+                        <option value=""></option>
+                        <option value="Perro">Perro</option>
+                        <option value="Gato">Gato</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="id_nombre" class="form-label" style="color: black;">Nombre mascota:</label>
+                    <input type="text" name="nombre" maxlength="30" id="id_nombre" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="id_edad" class="form-label" style="color: black;">Edad:</label>
+                    <input type="number" name="edad" id="id_edad" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="id_sexo" class="form-label" style="color: black;">Sexo:</label>
+                    <select name="sexo" id="id_sexo" class="form-select">
+                        <option value=""></option>
+                        <option value="Macho">Macho</option>
+                        <option value="Hembra">Hembra</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="id_color" class="form-label" style="color: black;">Color de la mascota:</label>
+                    <select name="color" id="id_color" class="form-select">
+                      <option value="Cafe">Café</option>
+                      <option value="Negro">Negro</option>
+                      <option value="Blanco">Blanco</option>
+                      <option value="Gris">Gris</option>
+                      
+                    </select>
+                  </div>
+                 <div class="mb-3">
+                    <label for="id_fecha_nacimiento" class="form-label" style="color: black;">Fecha nacimiento:</label>
+                    <input type="text" name="fecha_nacimiento" id="id_fecha_nacimiento" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="id_raza" class="form-label" style="color: black;">Raza:</label>
+                    <select name="raza" id="id_raza" class="form-select">
+                    </select>
+                </div>
+        
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var tipoMascotaSelect = document.getElementById('id_tipo_mascota');
+    var razaSelect = document.getElementById('id_raza');
+
+    tipoMascotaSelect.addEventListener('change', function() {
+        var selectedTipoMascota = tipoMascotaSelect.value;
+
+        // Limpiar las opciones de raza
+        razaSelect.innerHTML = '';
+
+        // Crear nuevas opciones de raza según el tipo de mascota seleccionado
+        if (selectedTipoMascota === 'Perro') {
+            var razasPerro = ['Bulldog francés','Cocker ', 'Pug', 'Pastor alemán', 'Chihuahua', 'Terrier Chileno','Kiltro'];
+            for (var i = 0; i < razasPerro.length; i++) {
+                var option = document.createElement('option');
+                option.value = razasPerro[i];
+                option.textContent = razasPerro[i];
+                razaSelect.appendChild(option);
+            }
+        } else if (selectedTipoMascota === 'Gato') {
+            var razasGato = ['Curl americano', 'Havana', 'Britanico de pelo corto', 'Bengal', 'Asiatico'];
+            for (var j = 0; j < razasGato.length; j++) {
+                var option = document.createElement('option');
+                option.value = razasGato[j];
+                option.textContent = razasGato[j];
+                razaSelect.appendChild(option);
+            }
+        }
+    });
+});
+    </script>
+</body>
+</html>
+{% endblock %}

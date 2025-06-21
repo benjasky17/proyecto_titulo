@@ -1,0 +1,37 @@
+{% extends 'tasks/base.html' %}
+{% load static %} 
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Agregar Atención</h3>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="nombre_atencion" style="color: black;">Nombre de la atención:</label>
+              <input type="text" class="form-control" id="nombre_atencion" name="nombre_atencion">
+            </div>
+            <div class="form-group">
+              <label for="tipo_atencion" style="color: black;">Tipo de atención:</label>
+              <input type="text" class="form-control" id="tipo_atencion" name="tipo_atencion">
+            </div>
+            <div class="form-group">
+              <label for="documento" style="color: black;">Documento adjunto:</label>
+              <input type="file" class="form-control" id="documento" name="documento">
+            </div>
+            <div class="text-end mt-3">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

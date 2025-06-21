@@ -1,0 +1,19 @@
+
+
+  .container1,.container-lg, .container-md, .container-sm, .container-xl, .container-xxl .p{
+    display: flex;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+    align-items: stretch;
+    color: aliceblue;
+    background-color: #343a40;
+  }
+
+  .custom-column {
+    background-color: black;
+    border: 1px solid black;
+  }

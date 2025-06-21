@@ -1,0 +1,85 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<br>
+
+<h3 style="color: aliceblue;">Inicio</h3>
+{% if not request.user.is_authenticated %}
+<hr>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-qJCQQ2V6RlA9H7Hkk9Cb2SjjjWhFGT2QtJmhm8VAr6dfNmGyQZ5x2zKEbKvToCZy" crossorigin="anonymous"></script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1 style="color: aliceblue; font-family:Didot; ">Bienvenido a Pretty Tails</h1>
+      <br>
+      <h2 style="color: aliceblue;font-family:Didot;">Aplicacion para gestionar documentacion de tus mascotas lindas</h2>
+      <br>
+      <p style="color: aliceblue;"></p>
+    </div>
+    <div class="col-md-6">
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://img2.wallspic.com/crops/5/9/9/1/31995/31995-miniatura_pastor_australiano-1280x720.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block"></div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://img1.wallspic.com/crops/2/4/1/2/82142/82142-cuidado_de_mascotas-amor_de_cachorro-gatito-perro_de_compania-raza_de_perro-1280x720.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block"></div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://img3.wallspic.com/crops/7/7/8/1/31877/31877-la_comida_de_las_mascotas-1280x720.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block"></div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endif %}
+<hr>
+
+{% if request.user.is_authenticated %}
+<h3 style="color: aliceblue; font-family:Didot;">
+   Bienvenido: {{user.username | upper}}
+</h3>
+<br>
+<div class="row">
+  <aside class="col-md-2">
+    <div class="card bg-dark" style="border-radius: 1rem; border-color: #ffffff;">
+      <div class="card-body">
+        <h5 class="card-title" style="color: aliceblue;">Enlaces</h5>
+        <ul class="list-group">
+          <li class="list-group-item bg-dark"><a href="{% url 'Perfil' %}" class="text-white">Perfil</a></li>
+          <li class="list-group-item bg-dark"><a href="{% url 'NMascotas' %}" class="text-white">Mascotas</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <div class="col-md-10">
+    <div class="card mx-auto bg-dark" style="width: 40rem; border-radius: 1rem; border-color: #ffffff;">
+      <img class="card-img-top" src="https://www.clarin.com/img/2022/07/06/los-perros-de-pelo-corto___uCxI9StAx_2000x1500__1.jpg" alt="Card image cap">
+      <div class="card-body">
+        <a href="{% url 'NMascotas' %}" class="btn btn-primary">Ver mascotas</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<hr>
+
+
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'tasks/base.html' %}
+{% load static %} 
+{% block content %}
+
+<link href="{% static "/css/main.css" %}" type="text/css" rel="stylesheet" media="screen,projection" />  
+<br>
+<h3 style="color: aliceblue;">Mascotas</h3>
+<br>
+
+<div class="aside" style="height: 1000px;">
+  <h4 style="color: aliceblue;">Nombre de la mascota: {{ mascota.nombre }}</h4>
+  <br>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-3 {% if atenciones|length > 0 %}scrollable{% endif %}" style="height: 600px; width: 350px; background-color: #7b53c5; border: 1px solid white; border-radius: 10px; margin-right: 25px;">
+        <div class="d-flex flex-column justify-content-between h-100">
+          <div>
+            <h5 style="color: aliceblue; font-size: 2rem;">Atención</h5>
+            {% if atenciones %}
+              <ul style="background-color: #3d2961; border: 1px solid white;">
+                {% for atencion in atenciones %}
+                  <li style="color: aliceblue;">{{ atencion.nombre_atencion }} - {{ atencion.tipo_atencion }}</li>
+                  {% if atencion.documento %}
+                    <a href="{{ atencion.get_documento_url }}" target="_blank" style="color: rgb(17, 16, 16); text-decoration:none; font-size: 1.5rem;">Ver documento</a>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% else %}
+              <h3>No hay atenciones registradas para esta mascota.</h3>
+            {% endif %}
+          </div>
+          <div>
+            <a href="{% url 'agregar_atencion' mascota_id=mascota.id %}" class="btn btn-primary">Insertar documentos</a>
+            <br>
+            <br>
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-md-3 {% if desparasitaciones|length > 0 %}scrollable{% endif %}" style="height: 600px; width: 350px; background-color: #7b53c5; border: 1px solid white; border-radius: 10px; margin-right: 25px;">
+        <div class="d-flex flex-column justify-content-between h-100">
+          <div>
+            <h5 style="color: aliceblue; font-size: 2rem;">Desparasitación</h5>
+            {% if desparasitaciones %}
+              <ul style="background-color: #3d2961; border: 1px solid white;">
+                {% for desparasitacion in desparasitaciones %}
+                  <li style="color: aliceblue;">{{ desparasitacion.nombre_desparacitacion }} - {{ desparasitacion.tipo_desparacitacion }}</li>
+                  {% if desparasitacion.documento %}
+                    <a href="{{ desparasitacion.get_documento_url }}" target="_blank" style="color: rgb(17, 16, 16); text-decoration:none; font-size: 1.5rem;">Ver documento</a>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% else %}
+              <h3>No hay desparasitaciones registradas para esta mascota.</h3>
+            {% endif %}
+          </div>
+          <div>
+            <a href="{% url 'agregar_desparacitacion' mascota_id=mascota.id %}" class="btn btn-primary">Insertar documentos</a>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 {% if vacunaciones|length > 0 %}scrollable{% endif %}" style="height: 600px; width: 350px; background-color: #7b53c5; border: 1px solid white; border-radius: 10px; margin-right: 10px;">
+        <div class="d-flex flex-column justify-content-between h-100">
+          <div>
+            <h5 style="color: aliceblue; font-size: 2rem;">Vacunaciones</h5>
+            {% if vacunaciones %}
+              <ul style="background-color: #3d2961; border: 1px solid white;">
+                {% for vacunacion in vacunaciones %}
+                  <li style="color: aliceblue;">{{ vacunacion.nombre_vacuna }} - {{ vacunacion.tipo_vacuna }}</li>
+                  {% if vacunacion.documento %}
+                    <a href="{{ vacunacion.get_documento_url }}" target="_blank" style="color: rgb(245, 238, 238); text-decoration:none; font-size: 1.5rem;">Ver documento</a>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% else %}
+              <h3>No hay vacunaciones registradas para esta mascota.</h3>
+            {% endif %}
+          </div>
+          <div>
+            <a href="{% url 'agregar_vacunacion' mascota_id=mascota.id %}" class="btn btn-primary">Insertar documentos</a>
+            <br>
+            <br>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

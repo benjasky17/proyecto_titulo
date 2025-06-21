@@ -1,0 +1,59 @@
+
+
+<br>
+{% extends 'tasks/base.html' %}
+{% load static %} 
+{% load crispy_forms_tags %}
+{% block content%}
+<link href="{% static "/css/main.css" %}" type="text/css" rel="stylesheet" media="screen,projection" />
+<br>
+
+
+<br>
+<!-- contraseña=12345 superuser=benja correo=admin@admin.com-->
+<form action="" method="post">
+  {% csrf_token %}
+  <div class="card mx-auto bg-dark" style="width: 40rem; border-radius: 1rem; border-color: #ffffff;">
+    <div class="card-body">
+      <h5 class="card-title text-white">Complete todos los campos</h5>
+      <div id="div_id_username" class="mb-3 text-white"> 
+        <label for="id_username" class="form-label requiredField">Nombre de usuario<span class="asteriskField">*</span> </label> 
+        <input type="text" name="username" maxlength="150" autofocus="" class="textinput form-control" required="" id="id_username">
+        <div id="hint_id_username" class="form-text text-white">Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y @/./+/-/_ </div>
+      </div>
+      <div id="div_id_first_name" class="mb-3 text-white">
+        <label for="id_first_name" class="form-label text-white">Nombre</label> 
+        <input type="text" name="first_name" maxlength="150" class="textinput form-control" id="id_first_name"> 
+      </div>
+      <div id="div_id_last_name" class="mb-3 text-white">
+        <label for="id_last_name" class="form-label">Apellidos</label>
+        <input type="text" name="last_name" maxlength="150" class="textinput form-control" id="id_last_name"> 
+      </div>
+      <div id="div_id_email" class="mb-3 text-white">
+        <label for="id_email" class="form-label">Dirección de correo electrónico</label>
+        <input type="email" name="email" maxlength="254" class="emailinput form-control" id="id_email"> 
+      </div>
+      <div id="div_id_password1" class="mb-3 text-white">
+        <label for="id_password1" class="form-label requiredField">Contraseña<span class="asteriskField">*</span></label>
+        <input type="password" name="password1" autocomplete="new-password" class="passwordinput form-control" required="" id="id_password1">
+        <div id="hint_id_password1" class="form-text text-white">
+          <ul>
+            <li>Su contraseña no puede asemejarse tanto a su otra información personal.</li>
+            <li>Su contraseña debe contener al menos 8 caracteres.</li>
+            <li>Su contraseña no puede ser una clave utilizada comúnmente.</li>
+            <li>Su contraseña no puede ser completamente numérica.</li>
+          </ul>
+        </div>
+      </div>
+      <div id="div_id_password2" class="mb-3">
+        <label for="id_password2" class="form-label requiredField">Contraseña (confirmación)<span class="asteriskField">*</span></label>
+        <input type="password" name="password2" autocomplete="new-password" class="passwordinput form-control" required="" id="id_password2">
+        <div id="hint_id_password2" class="form-text text-white">Para verificar, introduzca la misma contraseña anterior.</div>
+      </div>
+      <button class="btn btn-sm btn-primary float-end" type="submit">Registrarse</button>
+    </div>
+  </div>
+</form>
+<br><br><br>
+
+{% endblock %}

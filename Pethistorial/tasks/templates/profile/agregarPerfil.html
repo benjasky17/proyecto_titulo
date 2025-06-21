@@ -1,0 +1,45 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<html>
+<head>
+    <title>Rellene campos del perfil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="card card-sm" style="background-color: #bcbefa; margin-top: 2rem;">
+        <h1 class="card-header">Rellene campos del perfil</h1>
+        <div class="card-body">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <p>
+                    <label for="id_rut_user" style="color: black;">rut:</label>
+                    <input type="number" name="rut_user" id="id_rut_user" class="form-control" placeholder="123456789">
+                </p>
+                <p>
+                    <label for="id_address" style="color: black;">Dirección:</label>
+                    <input type="text" name="address" maxlength="50" id="id_address" class="form-control">
+                </p>
+                <p>
+                  <label for="id_location" style="color: black;">Comuna:</label>
+                  <select name="location" id="id_location" class="form-select">
+                      <option value=""></option>
+                      <option value="La Reina">La Reina</option>
+                      <option value="Las Condes">Las Condes</option>
+                      <option value="Vitacura">Vitacura</option>
+                      <option value="Peñalolen">Peñalolén</option>
+                      <option value="Macul">Macul</option>
+                      <option value="La Florida">La Florida</option>
+                  </select>
+                </p>
+                <p>
+                    <label for="id_telephone" style="color: black;">Teléfono:</label>
+                    <input type="text" name="telephone" maxlength="50" id="id_telephone" class="form-control">
+                </p>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
