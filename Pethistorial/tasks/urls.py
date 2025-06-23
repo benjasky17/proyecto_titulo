@@ -20,6 +20,8 @@ from tasks.views import home, exit, register, nosotros,Perfil, NMascotas, infoma
 from accounts.views import agregarPerfil
 from django.conf import settings
 from django.conf.urls.static import static,serve
+from django.contrib.auth import views as auth_views
+from django.contrib import admin
 
 # La lista `urlpatterns` se utiliza para mapear URLs a vistas en el framework web Django. Cada llamada a la función `path`
 # representa un patrón de URL y especifica la función de vista correspondiente que debe ser
@@ -27,7 +29,7 @@ from django.conf.urls.static import static,serve
 
 urlpatterns = [
    path('', home, name='home'),
-   path('login/', exit, name='exit'),
+   path('accounts/login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
    path('logout/', exit, name='exit'),
    path('register/', register, name='register'),
    path('nosotros/', nosotros, name='nosotros'),
@@ -39,6 +41,7 @@ urlpatterns = [
    path('agregarMascota/', agregarMascota, name='agregarMascota'),
    path('agregar_atencion/<int:mascota_id>/', agregar_atencion, name='agregar_atencion'),
    path('agregar_desparacitacion/<int:mascota_id>/', agregar_desparacitacion, name='agregar_desparacitacion'),
+   path('admin/', admin.site.urls)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
