@@ -13,7 +13,7 @@
     <title>VetHistorial</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">   
-    <link href="{% static 'css/main.css' %}" type="text/css" rel="stylesheet" media="screen,projection" /> 
+    <link href="{% static 'css/main2.css' %}" type="text/css" rel="stylesheet" media="screen,projection" /> 
     <!-- ...resto de tu código...
    
 </head>
@@ -33,7 +33,7 @@
       <div class="container-fluid">
         <a class="navbar-brand" href={% url 'home' %}>
           <img src="{% static "/img/logo.png" %}" alt="" width="30" height="24" class="d-inline-block align-text-top">
-          Prettytails
+          PetHistorial
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -71,10 +71,10 @@
     
     {% block content %}{% endblock %}
     
-    <br><br><br><br><br>
+
     
-    <footer class="mt-auto bg-dark text-white-50 fixed-bottom text-center">
-      <p>Hecho por estudiantes de Inacap</p>
+    <footer class="mt-auto bg-dark text-white-50 fixed-bottom text-center" style="padding: 0.2rem 0; font-size: 0.85rem; height: 32px;">
+     <p style="margin: 0;">Hecho por estudiantes de Inacap</p>
     </footer>
   </div>
 
