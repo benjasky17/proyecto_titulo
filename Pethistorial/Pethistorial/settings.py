@@ -83,6 +83,13 @@ pymysql.install_as_MySQLdb()
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+""" DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'PetHistorial',
         'USER': 'root',
@@ -90,7 +97,7 @@ DATABASES = {
         'HOST': '127.0.0.1',         # No uses 'localhost' (puede dar problemas con mysqlclient)
         'PORT': '3306',              # Puerto por defecto de MySQL
     }
-}
+} """
 
 
 LOGIN_REDIRECT_URL = '/Perfil/'
