@@ -5,15 +5,11 @@
 {% load static %} 
 {% load crispy_forms_tags %}
 {% block content%}
-<link href="{% static "/css/main.css" %}" type="text/css" rel="stylesheet" media="screen,projection" />
-<br>
 
-
-<br>
 <!-- contraseña=12345 superuser=benja correo=admin@admin.com-->
 <form action="" method="post">
   {% csrf_token %}
-  <div class="card mx-auto bg-dark" style="width: 40rem; border-radius: 1rem; border-color: #ffffff;">
+  <div class="card mx-auto bg-dark" style="width: 40rem; border-radius: 1rem; border-color: #ffffff; margin: 3rem 3rem;">
     <div class="card-body">
       <h5 class="card-title text-white">Complete todos los campos</h5>
       <div id="div_id_username" class="mb-3 text-white"> 
