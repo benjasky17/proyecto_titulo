@@ -18,3 +18,26 @@ base datos creada ahi "PetHistorial"
 usuario "admin" 
 password "admin"
 
+
+
+PASOS PARA CREAR Y ACTIVAR UN ENTORNO VIRTUAL EN WINDOWS
+
+1. Abre la terminal (CMD o PowerShell) en la carpeta del proyecto.
+
+2. Ejecuta el siguiente comando para crear el entorno virtual:
+   python -m venv venv
+
+3. Activa el entorno virtual con:
+   .\venv\Scripts\activate
+
+4. Instala las dependencias del proyecto:
+   pip install -r requirements.txt
+
+   python manage.py migrate
+
+   python manage.py runserver
+
+5. Para desactivar el entorno virtual, usa:
+   deactivate 
+
+   
