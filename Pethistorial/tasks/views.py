@@ -288,3 +288,14 @@ def agregar_desparacitacion(request, mascota_id):
         'mascota': mascota
     }
     return render(request, 'mascotas/agregar_desparacitacion.html', context)
+
+def recordatorios(request):
+    """
+    La función `recordatorios` renderiza una plantilla HTML llamada 'recordatorios.html'.
+    
+    :param request: El parámetro `request` es un objeto que representa la petición HTTP realizada por el
+    usuario. Contiene información sobre la petición, como el método utilizado (GET o POST), las cabeceras,
+    el agente de usuario y cualquier dato enviado con la solicitud.
+    :return: una plantilla HTML renderizada llamada 'tasks/recordatorios.html'.
+    """
+    return render(request, 'tasks/recordatorios.html')
