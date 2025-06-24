@@ -51,11 +51,12 @@
                 
               </tr>
               {% endfor %}
+              <strong style="color: #e4e5e9;">No se encuentran Datos</strong>
               <tr>
-                <td>{{ user.profile.rut_user }}</td>
-                <td>{{ user.profile.address }}</td>
-                <td>{{ user.profile.location }}</td>
-                <td>{{ user.profile.telephone }}</td>   
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>   
                 </tr>
             </tbody>
           </table>
@@ -72,3 +73,5 @@
 <br>
 <br>
 {% endblock %}
+
+{% block scripts %}

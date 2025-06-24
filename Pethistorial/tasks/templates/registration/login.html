@@ -3,21 +3,17 @@
 {% load static %} 
 {% load crispy_forms_tags %}
 
-<link href="{% static "/css/main.css" %}" type="text/css" rel="stylesheet" media="screen,projection" />  
-<br>
-<br>
-<br>
-<br>
+
 <!-- contraseña=12345 superuser=benja correo=admin@admin.com-->
 <form action="" method="post">
    {%csrf_token%}
    
       
-      <div class="card mx-auto bg-dark" style="width: 30rem; border-radius: 1rem; border-color: #ffffff;">
+      <div class="card mx-auto bg-dark" style="width: 40rem; border-radius: 1rem; border-color: #ffffff; margin: 8rem 3rem;">
         <div class="row g-0">
           <div class="col-md-6 order-md-2 d-flex align-items-center justify-content-center">
-            <img src="{% static "/img/login_img.png" %}" alt="Imagen" class="img-fluid" style="max-width: 90%; height: auto;
-            border-radius: 10px;">
+            <img src="{% static "/img/login_img.png" %}" alt="Imagen" class="img-fluid" style="max-width: auto; height: auto;
+            border-radius: 10px; margin: 1rem ;">
           </div>
           <div class="col-md-6 order-md-1">
             <div class="card-body">
@@ -32,11 +28,13 @@
                 <span class="asteriskField">*</span>
                 <input type="password" name="password" autocomplete="current-password" class="passwordinput form-control" required id="id_password">
              </div>
+             <div class="mb-3 text-white" style="margin: 2rem 0rem;">
               <a href={% url 'register' %} class="card-link text-white">Registrarse</a>
               <br>
               <a href={% url 'password_change' %} class="card-link text-white">Olvidé mi Contraseña</a>
               <br><br>
-              <button type="submit" class="btn btn-sm btn-primary float-end">Iniciar sesión</button>
+             </div>
+              <button type="submit" class="btn btn-sm btn-primary float-end" style="margin: 1rem 1rem;">Iniciar sesión</button>
               <br><br>
             </div>
           </div>

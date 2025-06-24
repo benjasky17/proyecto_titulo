@@ -5,6 +5,7 @@ from django.urls import reverse
 from accounts.forms import PerfilForm,MascotaForm1,VacunacionForm,DesparacitacionForm,AtencionForm
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 
 
@@ -93,8 +94,17 @@ def register(request):
             user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             login(request, user)
             
-            return redirect('home')
+            messages.success(request, '¡Registro exitoso!')
+            return redirect('home')  # Redirige a la misma página para mostrar la alerta
+            
+            
     return render(request,'registration/register.html', data)
+
+
+from django.contrib.auth import authenticate, login
+
+
+
 
 def nosotros(request):
     """
