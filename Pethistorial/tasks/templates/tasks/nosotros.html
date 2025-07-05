@@ -1,39 +1,49 @@
 {% extends 'tasks/base.html' %}
 {% load static %} 
-{% block content%}
+
+{% block content %}
 <html lang="es">
 <head>
-    <link href="{% static "/css/nosotros.css" %}" type="text/css" rel="stylesheet" media="screen,projection" />  
+  <link href="{% static "/css/nosotros.css" %}" type="text/css" rel="stylesheet" media="screen,projection" />  
 </head>
 
-
 <body>
-    <div class="container1  mb-5 d-flex  justify-content-center vh-auto align-items-center">
-        <div >
-          <p>
-            <h2>Nosotros</h2>
-            <h4>Que tal somos los creadores de esta app llamada PetHistorial la cual es creada por 
-              3 futuros ingenierios en informatica de Inacap
-              , la cual tiene como objetivo ayudar a los dueños de mascotas a llevar un control de sus mascotas y
-             sus visitas al veterinario.
-            </h4>
-              
-            <br>
-            <br>  
-            </h3>
+  <div class="container1 mb-5 d-flex justify-content-center vh-auto align-items-center">
+    <div>
+      <h2>Nosotros</h2>
+      <h4>
+        Somos los creadores de <strong>PetHistorial</strong>, una aplicación web desarrollada como proyecto de título para la carrera de Ingeniería en Informática en INACAP.
+        Nuestro objetivo es brindar una herramienta que permita a los dueños de mascotas gestionar de forma digital el historial de salud de sus animales, recordatorios de vacunas, visitas veterinarias y cuidados generales.
+      </h4>
 
-              <h3>Juan Novoa </h3>
-              <h3>John Montoya</h3>
-              <h3>Benjamin Guajardo </h3>
+      <br>
+      <h4>
+        <strong>Misión:</strong> Facilitar la tenencia responsable mediante la digitalización de información relevante para la salud de las mascotas.
+      </h4>
+      <h4>
+        <strong>Visión:</strong> Ser una plataforma de apoyo para mejorar la calidad de vida de las mascotas y fomentar la responsabilidad de sus dueños.
+      </h4>
+      <h4>
+        <strong>Valores:</strong> Compromiso, responsabilidad, innovación y amor por los animales.
+      </h4>
 
-              <br>
-            <img src="{% static "/img/Inacap.png" %}" alt="" width="30" height="24" class="d-inline-block align-text-top">
-            INACAP sede apoquindo
-          </p>
-        </div>
-        
-      </div>
+      <br><br>
+      <h4><strong>Equipo de trabajo:</strong></h4>
+      <ul>
+        <li><strong>Juan Novoa</strong> — Analista de requisitos y modelamiento de procesos.</li>
+        <li><strong>John Montoya</strong> — Desarrollador Back-end y base de datos.</li>
+        <li><strong>Benjamín Guajardo</strong> — Desarrollador Front-end y diseño de la interfaz.</li>
+      </ul>
+
+      <br>
+      <p>
+        Este proyecto fue desarrollado en <strong>INACAP</strong>, sede Online, como parte de nuestra formación profesional.
+      </p>
+
+      <img src="{% static "/img/Inacap.png" %}" alt="Logo Inacap" width="60" class="mt-3">
+      <p>INACAP Sede Apoquindo</p>
+    </div>
+  </div>
 </body>
-
 </html>
 {% endblock %}

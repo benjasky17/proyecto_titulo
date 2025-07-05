@@ -60,3 +60,6 @@ class AtencionForm(forms.ModelForm):
     class Meta:
         model = Atencion
         fields = ['nombre_atencion', 'tipo_atencion', 'documento']
+
+
+

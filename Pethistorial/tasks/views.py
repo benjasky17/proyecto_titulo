@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.urls import reverse
 from accounts.forms import PerfilForm,MascotaForm1,VacunacionForm,DesparacitacionForm,AtencionForm
+from tasks.forms import RecordatorioForm
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
@@ -289,13 +290,38 @@ def agregar_desparacitacion(request, mascota_id):
     }
     return render(request, 'mascotas/agregar_desparacitacion.html', context)
 
+
 def recordatorios(request):
-    """
-    La función `recordatorios` renderiza una plantilla HTML llamada 'recordatorios.html'.
-    
-    :param request: El parámetro `request` es un objeto que representa la petición HTTP realizada por el
-    usuario. Contiene información sobre la petición, como el método utilizado (GET o POST), las cabeceras,
-    el agente de usuario y cualquier dato enviado con la solicitud.
-    :return: una plantilla HTML renderizada llamada 'tasks/recordatorios.html'.
-    """
-    return render(request, 'tasks/recordatorios.html')
+    user = request.user  # Usuario actual
+
+    if request.method == 'POST':
+        form = RecordatorioForm(request.POST)
+        if form.is_valid():
+            recordatorio = form.save(commit=False)
+            recordatorio.user = user  # Asocia al usuario logueado
+            recordatorio.save()
+            return redirect('recordatorios')  # Redirige a la misma vista o donde quieras
+    else:
+        form = RecordatorioForm()
+
+    return render(request, 'recordatorios/recordatorios.html', {
+        'form': form
+    })
+from django.shortcuts import render
+
+
+from django.http import JsonResponse
+from .models import Recordatorio
+def api_recordatorios(request):
+    user = request.user
+    recordatorios = Recordatorio.objects.filter(user=user)
+
+    eventos = []
+    for recordatorio in recordatorios:
+        eventos.append({
+            'title': recordatorio.titulo,
+            'start': str(recordatorio.fecha_recordatorio),
+            'description': recordatorio.descripcion
+        })
+
+    return JsonResponse(eventos, safe=False)

@@ -16,7 +16,8 @@ Including another URLconf
 """
 
 from django.urls import path
-from tasks.views import home, exit, register, nosotros,Perfil, NMascotas, infomascotas, agregarMascota, agregar_desparacitacion, agregar_vacunacion, agregar_atencion
+from tasks.views import api_recordatorios
+from tasks.views import home,recordatorios, exit, register, nosotros,Perfil, NMascotas, infomascotas, agregarMascota, agregar_desparacitacion, agregar_vacunacion, agregar_atencion
 from accounts.views import agregarPerfil
 from django.conf import settings
 from django.conf.urls.static import static,serve
@@ -41,6 +42,8 @@ urlpatterns = [
    path('agregarMascota/', agregarMascota, name='agregarMascota'),
    path('agregar_atencion/<int:mascota_id>/', agregar_atencion, name='agregar_atencion'),
    path('agregar_desparacitacion/<int:mascota_id>/', agregar_desparacitacion, name='agregar_desparacitacion'),
+   path('Recordatorios/', recordatorios, name='recordatorios'),  
+path('api/recordatorios/', api_recordatorios, name='api_recordatorios'),
    path('admin/', admin.site.urls)
 ]
 
