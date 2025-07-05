@@ -1,0 +1,119 @@
+{% extends 'tasks/base.html' %}
+
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row" style="background-color: #343a40; padding: 20px; border-radius: 10px; width: auto; height: auto;">
+    <!-- Columna del Formulario -->
+    <div class="col-md-4">
+      <h3 style="color: white;">Formulario</h3>
+     <form method="POST">
+  {% csrf_token %}
+  <p>
+    <label for="{{ form.titulo.id_for_label }}" style="color: #ffffff;" >Título:</label>
+    {{ form.titulo }}
+    {% if form.titulo.errors %}
+      <div class="text-danger">{{ form.titulo.errors }}</div>
+    {% endif %}
+  </p>
+  <p>
+    <label for="{{ form.descripcion.id_for_label }} " style="color: #ffffff;" >Descripción:</label>
+    {{ form.descripcion }}
+    {% if form.descripcion.errors %}
+      <div class="text-danger">{{ form.descripcion.errors }}</div>
+    {% endif %}
+  </p>
+  <p>
+    <label for="{{ form.fecha_recordatorio.id_for_label }}" style="color: #ffffff;">Fecha:</label>
+    {{ form.fecha_recordatorio }} <h6>DD/MM/YYYY</h6>
+    
+    {% if form.fecha_recordatorio.errors %}
+      <div class="text-danger">{{ form.fecha_recordatorio.errors }}</div>
+    {% endif %}
+  </p>
+  <button type="submit" class="btn btn-primary">Guardar Recordatorio</button>
+</form>
+    </div>
+
+    <!-- Columna del Calendario -->
+    <div class="col-md-8">
+      <h3 style="color: white;">Calendario</h3>
+      <!-- Aquí puedes incrustar tu calendario, ejemplo usando FullCalendar -->
+      <div id="calendar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Ejemplo: incluye FullCalendar JS y CSS -->
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    // 🔥 Ejemplo estático: simula tus recordatorios guardados
+    var eventos = [
+      {
+        title: 'Vacuna Cucho',
+        start: '2025-07-06',
+        description: 'Vacuna a las 10 de la noche'
+      },
+      {
+        title: 'Desparasitación',
+        start: '2025-07-15',
+        description: 'Recordar dar la pastilla'
+      }
+    ];
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      locale: 'es',
+      events: eventos,  // <- aquí pasas la lista de eventos
+      eventClick: function(info) {
+        // Muestra la descripción al hacer click en un evento
+        alert(info.event.title + "\n" + info.event.extendedProps.description);
+      }
+    });
+
+    calendar.render();
+  });
+</script>
+
+
+<style>
+  #calendar {
+    background-color: #212529;  /* Bootstrap bg-dark */
+    color: #ffffff;             /* Texto claro */
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .fc-toolbar-title,
+  .fc-col-header-cell-cushion,
+  .fc-daygrid-day-number {
+    color: #ffffff;
+  }
+
+  .fc-daygrid-day {
+    background-color: #2c2f33;  /* Fondo de cada celda */
+    border: 1px solid #444;     /* Borde más visible */
+  }
+
+  .fc-button {
+    background-color: #343a40;
+    color: #ffffff;
+    border: none;
+  }
+
+  .fc-button:hover {
+    background-color: #495057;
+  }
+
+
+  
+</style>
+{% endblock %}
+
+
+

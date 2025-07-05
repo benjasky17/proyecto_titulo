@@ -99,3 +99,12 @@ class Atencion(models.Model):
     
     def __str__(self):
         return self.nombre_atencion
+    
+
+
+
+class Recordatorio(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recordatorios_accounts')
+    titulo = models.CharField(max_length=100)
+    descripcion = models.TextField(blank=True)
+    fecha_recordatorio = models.DateField()

@@ -10,3 +10,11 @@ class CustomUserCreationForm(UserCreationForm):
 		model = User
 		fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
 		
+
+from django import forms
+from .models import Recordatorio
+
+class RecordatorioForm(forms.ModelForm):
+    class Meta:
+        model = Recordatorio
+        fields = ['titulo', 'descripcion', 'fecha_recordatorio']

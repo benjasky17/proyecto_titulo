@@ -1,77 +1,65 @@
 {% extends 'tasks/base.html' %}
 
 {% block content %}
-<br>
-<h3 style="color: aliceblue;">Perfil</h3>
-<br>
-<div class="row">
-  <div class="col-md-12">
-    <div class="card mx-auto bg-dark" style="width: 40rem; border-radius: 1rem; border-color: #ffffff;">
-      <div class="card-body">
-        <h1 style="color: aliceblue;">Datos del usuario</h1>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Nombre de usuario</th>
-              <th>Nombre</th>
-              <th>Apellidos</th>
-              <th>Correo electrónico</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ form.username.value }}</td>
-              <td>{{ form.first_name.value }}</td>
-              <td>{{ form.last_name.value }}</td>
-              <td>{{ form.email.value }}</td>      
-            </tr>
-          </tbody>
-        </table>
-        {% if user.profile %}
-        <h1 style="color: aliceblue; ">Datos del Perfil</h1>
-       
-          <table class="table " style="background-color: #bcbefa;">
-            <thead >
+<div class="container py-4">
+  <h3 class="text-center mb-4" style="color: #bcbefa;">Perfil</h3>
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+      <div class="card bg-dark shadow-lg border-0" style="border-radius: 1.5rem;">
+        <div class="card-body">
+          <!-- Datos del Usuario -->
+          <h4 class="mb-3" style="color: #bcbefa;">Datos del usuario</h4>
+          <table class="table table-striped table-bordered table-hover align-middle rounded bg-light">
+            <thead class="table-dark">
               <tr>
-                <th>Rut</th>
-                <th>Dirección</th>
-                <th>Comuna</th>
-                <th>Teléfono</th>
-                
+                <th>Nombre de usuario</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Correo electrónico</th>
               </tr>
             </thead>
             <tbody>
-              {% for profile in profile %}
               <tr>
-                <td>{{ user.profile.rut_user }}</td>
-                <td>{{ user.profile.address }}</td>
-                <td>{{ user.profile.location }}</td>
-                <td>{{ user.profile.telephone }}</td>   
-                
-                
+                <td>{{ user.username }}</td>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.email }}</td>      
               </tr>
-              {% endfor %}
-              <strong style="color: #e4e5e9;">No se encuentran Datos</strong>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>   
-                </tr>
             </tbody>
           </table>
-        {% else %}
-          <strong>No se encuentran Datos</strong>
-        {% endif %}
-        <br>
-        <a href={% url 'agregarPerfil' %} class="btn btn-primary" style="float: right;">Actualizar del Perfil</a>
+
+          <!-- Datos del Perfil -->
+          {% if user.profile %}
+            <h4 class="mt-5 mb-3" style="color: #bcbefa;">Datos del Perfil</h4>
+            <table class="table table-striped table-bordered table-hover align-middle rounded" style="background-color: #f3f4fa;">
+              <thead class="table-primary">
+                <tr>
+                  <th>Rut</th>
+                  <th>Dirección</th>
+                  <th>Comuna</th>
+                  <th>Teléfono</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ user.profile.rut_user }}</td>
+                  <td>{{ user.profile.address }}</td>
+                  <td>{{ user.profile.location }}</td>
+                  <td>{{ user.profile.telephone }}</td>
+                </tr>
+              </tbody>
+            </table>
+          {% else %}
+            <div class="alert alert-warning mt-4 mb-0 text-center">No se encuentran Datos</div>
+          {% endif %}
+
+          <!-- Botón para actualizar -->
+          <div class="d-flex justify-content-end mt-4">
+            <a href="{% url 'agregarPerfil' %}" class="btn btn-primary px-4">Actualizar Perfil</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<br>
-<br>
-<br>
 {% endblock %}
-
-{% block scripts %}

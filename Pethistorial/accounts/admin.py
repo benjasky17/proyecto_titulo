@@ -70,3 +70,15 @@ class AtencionAdmin(admin.ModelAdmin):
         if change and not obj.documento and isinstance(file, FileField) and file:
             file.delete()
 admin.site.register(Atencion,AtencionAdmin)
+
+
+
+from tasks.models import Recordatorio  # Agrega este import
+
+class RecordatorioAdmin(admin.ModelAdmin):
+    list_display = ['titulo', 'user', 'fecha_recordatorio']
+    search_fields = ['titulo', 'descripcion', 'user__username']
+    list_filter = ['fecha_recordatorio', 'user']
+    
+
+admin.site.register(Recordatorio, RecordatorioAdmin)

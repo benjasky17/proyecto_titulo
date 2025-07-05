@@ -93,8 +93,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'PetHistorial',
         'USER': 'root',
-        'PASSWORD': 'admin',              # Vacío por defecto en XAMPP
-        'HOST': '127.0.0.1',         # No uses 'localhost' (puede dar problemas con mysqlclient)
+        'PASSWORD': 'admin',             
+        'HOST': '127.0.0.1',         # Dirección IP del servidor MySQL 
         'PORT': '3306',              # Puerto por defecto de MySQL
     }
 } """
